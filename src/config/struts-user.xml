@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>    
+	
+	<!-- 与spring集成的写法，action等交予spring管理 -->
+	<package name="default" namespace="/" extends="abstract_struts">	
+		<action name="login" class="loginAction">
+			<result name="success" type="redirectAction">user/user_queryAllUser</result>
+			<!-- <result name="success" type="tiles">index-def</result> -->
+			<result name="fail">/index.jsp</result>			
+		</action>
+	</package>
+	
+	<package name="user" namespace="/user" extends="abstract_struts">
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="success" type="redirectAction">user_queryAllUser</result>			
+			<result name="userList">/user_list.jsp</result>
+			<result name="addUser">/user_add.jsp</result>
+			<result name="updateUser">/user_update.jsp</result>
+			<interceptor-ref name="myInterceptor" />
+		</action>
+	</package>
+	
+	<package name="file" namespace="/file" extends="abstract_struts">
+		<action name="file_*" class="fileUploadAction" method="{1}">
+		    <!-- 配置允许上传的文件类型，多个用","分隔 -->  
+            <param name="allowTypes">image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/x-png, image/pjpeg</param> 
+		    <param name="savePath">/upload</param>
+			<result name="success">/success.jsp</result>
+			<result name="fileUpload">/file_upload.jsp</result>
+			<result name="error">/file_upload.jsp</result>			
+			<interceptor-ref name="myInterceptor" />
+		</action>
+	</package>
+</struts>

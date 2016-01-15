@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	
+	<!-- 更改struts2请求Action的后缀名，默认为action。若想去掉后缀，设为","即可 -->
+	<constant name="struts.action.extension" value="," />
+	
+	<!-- 设置struts2所排除的url（通过正则表达式匹配多个以逗号隔开） -->
+	<constant name="struts.action.excludePattern" value="/api/.*,/css/.*,/images/.*,/js/.*,/apidoc/.*" />
+	
+	<!-- (默认false)是否支持动态的方法调用,在URL上通过!method指定方法。 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	
+	<!--解决乱码    -->
+    <constant name="struts.i18n.encoding" value="UTF-8" />
+    
+    <!-- 国际化资源文件名 -->
+    <constant name="struts.custom.i18n.resources" value="messages"/>   
+    
+    
+    <!-- 指定允许上传的文件最大字节数。默认值是10485760(10M) -->
+    <constant name="struts.multipart.maxSize" value="10485760"/>    
+    
+    <!-- 全局异常捕获 -->
+    <package name="exception_struts" extends="struts-default,tiles-default">
+		<global-results>	
+			<result name="error">/error.jsp</result>	
+		</global-results>
+	
+		<global-exception-mappings>	
+			<exception-mapping result="error" exception="java.lang.Exception" />	
+		</global-exception-mappings>
+	
+	</package>
+
+	<package name="abstract_struts" abstract="true" extends="exception_struts" namespace="/">
+		<interceptors>
+			<interceptor name="checkLogin" class="checkLoginInterceptor" />
+			<interceptor-stack name="myInterceptor">
+				<interceptor-ref name="checkLogin" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<global-results>
+			<result name="checkLoginFail">/index.jsp</result>
+		</global-results>
+	</package>
+	
+
+	<!-- 包含的配置文件 -->
+	<include file="/config/struts-user.xml"></include>
+
+</struts>
