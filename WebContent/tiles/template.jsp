@@ -3,11 +3,8 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 
 <%
-
 String path = request.getContextPath();
-
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-
 %>
 
 <base href="<%=basePath%>">
@@ -16,71 +13,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 #container {
 	margin-left: auto;
 	margin-right: auto;
-	width: 800px;
+	width: 1024px;
 }
 
 #header {
 	float: left;
-	width: 800px;
+	width: 1024px;
 	height: 150px;
-	background: red
+	background: #63B8FF
 }
 
-#daohang {
+#menu {
 	float: left;
-	width: 150px;
-	height: 400px;
-	background: blue;
+	width: 154px;
+	height: 680px;
+	background:#B9D3EE;
 	word-wrap: break-word
 }
 
-#right {
+#body {
 	float: right;
-	width: 642px;
-	height: 400px;
-	background: green
+	width: 870px;
+	height: 680px;
+	background: #B2DFEE
 }
 
-#mbottom {
+#footer {
 	float: left;
-	width: 800px;
-	height: 150px;
-	background: yellow
+	width: 1024px;
+	height: 40px;
+	background:#7EC0EE
 }
 </style>
 
-<div id="container" style="height: auto">
-
+<div id="container" style="height:auto">
 	<div id="header">
-
 		<tiles:insertAttribute name="header" />
-
 	</div>
 
-
-
-	<div id="daohang">
-
+	<div id="menu">
 		<tiles:insertAttribute name="menu" />
-
 	</div>
 
-
-
-	<div id="right" style="border: none">
-
+	<div id="body" style="border:none">
 		<tiles:insertAttribute name="body" />
-
 	</div>
 
-
-
-	<div id="mbottom" style="height: 100px">
-
+	<div id="footer">
 		<tiles:insertAttribute name="footer" />
-
 	</div>
-
-
-
 </div>

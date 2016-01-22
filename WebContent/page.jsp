@@ -5,8 +5,8 @@
 <s:set var="urlNameSpace" value="%{param.urlNameSpace}" />
 <script type="text/javascript">
 	function getCurrentPage(page){
-		var a = document.getElementById("indexPageHref");     
-	    a.href = '${url}?pageNo='+page;          
+		var a = document.getElementById("indexPageHref");
+		a.href = '${url}?pageNo='+page;          
 	    a.setAttribute("onclick",'');            
 	    a.click("return false"); 
 	}

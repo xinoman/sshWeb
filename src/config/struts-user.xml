@@ -8,16 +8,17 @@
 	<!-- 与spring集成的写法，action等交予spring管理 -->
 	<package name="default" namespace="/" extends="abstract_struts">	
 		<action name="login" class="loginAction">
-			<result name="success" type="redirectAction">user/user_queryAllUser</result>
-			<!-- <result name="success" type="tiles">index-def</result> -->
+			<!-- <result name="success" type="redirectAction">user/user_queryAllUser</result> -->
+			<result name="success" type="tiles">index-def</result>
 			<result name="fail">/index.jsp</result>			
 		</action>
 	</package>
 	
 	<package name="user" namespace="/user" extends="abstract_struts">
 		<action name="user_*" class="userAction" method="{1}">
-			<result name="success" type="redirectAction">user_queryAllUser</result>			
-			<result name="userList">/user_list.jsp</result>
+			<result name="success" type="redirectAction">user_queryAllUser</result>	
+			<!-- <result name="userList">/user_list.jsp</result> -->		
+			<result name="userList" type="tiles">user-body</result>
 			<result name="addUser">/user_add.jsp</result>
 			<result name="updateUser">/user_update.jsp</result>
 			<interceptor-ref name="myInterceptor" />
@@ -30,7 +31,8 @@
             <param name="allowTypes">image/bmp,image/png,image/gif,image/jpeg,image/jpg,image/x-png, image/pjpeg</param> 
 		    <param name="savePath">/upload</param>
 			<result name="success">/success.jsp</result>
-			<result name="fileUpload">/file_upload.jsp</result>
+			<!-- <result name="fileUpload">/file_upload.jsp</result> -->
+			<result name="fileUpload" type="tiles">fileupload-body</result>
 			<result name="error">/file_upload.jsp</result>			
 			<interceptor-ref name="myInterceptor" />
 		</action>

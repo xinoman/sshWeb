@@ -11,7 +11,7 @@
 </head>
 <body>
 	<center>
-		<h1>Footer</h1>
+		版权所有 © 2013 深圳市信诺曼科技有限公司 保留全部权利
 	</center>
 </body>
 </html>

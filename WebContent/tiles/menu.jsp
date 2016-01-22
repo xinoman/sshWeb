@@ -11,7 +11,8 @@
 </head>
 <body>
 	<center>
-		<h1>Menu</h1>
+		<s:a action="user_queryAllUser" namespace="/user">用户列表</s:a><br>
+		<s:a action="file_fileUploadUI" namespace="/file">文件上传</s:a>
 	</center>
 </body>
 </html>
